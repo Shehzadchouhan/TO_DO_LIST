@@ -3,6 +3,12 @@
 A simple and responsive **To-Do List** web application built using **HTML**, **CSS**, and **JavaScript**. This project helps users add, delete, and manage their daily tasks efficiently.
 ---
 
+## 🔗 Live Demo
+
+👉 [Click here to visit the live site](## 🔗 Live Demo
+
+👉 [Click here to visit the live site](https://shehzadchouhan.github.io/gym-intro-page/)
+
 ## 🚀 Features
 
 - 📝 Add new tasks
