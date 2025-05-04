@@ -5,8 +5,6 @@ A simple and responsive **To-Do List** web application built using **HTML**, **C
 
 ## 🔗 Live Demo
 
-👉 [Click here to visit the live site](## 🔗 Live Demo
-
 👉 [Click here to visit the live site](https://shehzadchouhan.github.io/gym-intro-page/)
 
 ## 🚀 Features
