@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-
     const quotes = [
         "\"Stay focused and never give up!\"",
         "\"The only way to do great work is to love what you do.\"",
@@ -12,21 +10,32 @@ document.addEventListener("DOMContentLoaded", function () {
         "\"Dream it. Wish it. Do it.\""
     ];
 
-    function getRandomQuote() {
-        return quotes[Math.floor(Math.random() * quotes.length)];
+    let quoteIndex = 0;
+    let charIndex = 0;
+    const quoteElement = document.querySelector(".quote");
+
+    function typeQuote() {
+        if (!quoteElement) return;
+
+        if (charIndex < quotes[quoteIndex].length) {
+            quoteElement.textContent += quotes[quoteIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeQuote, 60);
+        } else {
+            setTimeout(() => {
+                quoteElement.textContent = "";
+                charIndex = 0;
+                quoteIndex = (quoteIndex + 1) % quotes.length;
+                typeQuote();
+            }, 2500); // wait before next quote
+        }
     }
 
-    let savedQuote = localStorage.getItem("motivationalQuote");
-    if (!savedQuote) {
-        savedQuote = getRandomQuote();
-        localStorage.setItem("motivationalQuote", savedQuote);
-    }
-    document.querySelector('.quote').textContent = savedQuote;
-    setInterval(function () {
-        const newQuote = getRandomQuote();
-        localStorage.setItem("motivationalQuote", newQuote);
-        document.querySelector('.quote').textContent = newQuote;
-    }, 10000);
+    typeQuote(); // start animation
+;
+
+
+  document.addEventListener("DOMContentLoaded", typeQuote);
 
         // ✅ DOM elements initialized first
     const taskInput = document.getElementById("taskInput");
@@ -153,4 +162,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     updateEmptyMessage();
+
+    // feedback
+    document.getElementById("feedbackBtn").onclick = function() {
+  const form = document.getElementById("feedbackForm");
+  form.style.display = form.style.display === "none" ? "block" : "none";
+};
+
 });
+
+
+  // Wait for DOM to load
+  document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("lReIwE6OjDFyj-zlP"); // Your EmailJS public key
+
+    // Toggle feedback form
+    document.getElementById("feedbackBtn").addEventListener("click", () => {
+      const form = document.getElementById("feedbackForm");
+      form.style.display = form.style.display === "block" ? "none" : "block";
+    });
+
+    // Handle form submission
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      emailjs.sendForm("service_8dqwecs", "template_znkyk1e", this)
+        .then(() => {
+          alert("Feedback sent successfully!");
+          this.reset();
+          document.getElementById("feedbackForm").style.display = "none";
+        })
+        .catch(error => {
+          alert("Error sending feedback: " + JSON.stringify(error));
+        });
+    });
+  });
+
