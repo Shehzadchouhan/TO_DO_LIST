@@ -6,12 +6,14 @@ A simple and responsive **To-Do List** web application built using **HTML**, **C
 ## 🔗 Live Demo
 
 👉 [Click here to visit the live site](https://listtodone.netlify.app/)
+---
 
-##Screenshots-
+## Screenshots-
 #### Home Page
 ![Home Page](./assets/home.png)
 #### feedback Page
 ![about Page](./assets/fb.png)
+---
 
 ## 🚀 Features
 
